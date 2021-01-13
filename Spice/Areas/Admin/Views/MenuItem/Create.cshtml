@@ -1,17 +1,15 @@
 ﻿@model Spice.Models.ViewModels.MenuItemViewModel
 @using Spice.Extensions
 
-@{
-    ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewData["Title"] = "Create";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <br />
-<h2 class="text-info">Create Menu Item</h2>
+<h2 class="text-info">Create MenuItem</h2>
 <br />
 
-<form method="post" enctype="multipart/form-data">
-    <div class="border backgroundWhite p-3">
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="border backgroundWhite">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group row">
             <div class="col-2">
@@ -70,10 +68,10 @@
                 <label asp-for="MenuItem.Spicyness" class="col-form-label"></label>
             </div>
             <div class="col-5">
-                <select asp-for="MenuItem.Spicyness" asp-items="Html.GetEnumSelectList<MenuItem.ESpicy>()" class="form-label"></select>
+                <select asp-for="MenuItem.Spicyness" asp-items="Html.GetEnumSelectList<MenuItem.ESpicy>()" class="form-control"></select>
             </div>
-            <span asp-validation-for="MenuItem.Spicyness" class="text-danger"></span>
         </div>
+
         <div class="form-group row">
             <div class="col-5 offset-2">
                 <partial name="_CreateAndBackToListButton" />
@@ -83,7 +81,6 @@
 </form>
 
 @section Scripts{
-
     <script>
         tinymce.init({
             selector: 'textarea',
@@ -92,27 +89,31 @@
         });
     </script>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        getSubCategory();
-        $('#CategoryId').change(function () {
-            getSubCategory();
-        });
-    });
 
-    function getSubCategory() {
-        var url = '@Url.Content("~/")' + "Admin/SubCategory/GetSubCategory";
-        var ddlsource = '#CategoryId';
-        $.getJSON(url, { id: $(ddlsource).val() }, function (data) {
-            var items = '';
-            $('#SubCategoryId').empty();
-            $.each(data, function (i, subcategory) {
-                items += "<option value= '" + subcategory.value + "'>" + subcategory.text + "</option>"
+    <script type="text/javascript">
+        $(document).ready(function () {
+            getSubCategory();
+            $('#CategoryId').change(function () {
+                getSubCategory();
             });
-            $('#SubCategoryId').html(items);
-        })
-    }
-</script>
+        });
+
+
+        function getSubCategory() {
+            var url = '@Url.Content("~/")' + "Admin/SubCategory/GetSubCategory";
+            var ddlsoruce = '#CategoryId';
+            $.getJSON(url, { id: $(ddlsoruce).val() }, function (data) {
+                var items = '';
+                $('#SubCategoryId').empty();
+                $.each(data, function (i, subcategory) {
+                    items += "<option value='" + subcategory.value + "'>" + subcategory.text + "</option>";
+                });
+
+                $('#SubCategoryId').html(items);
+            })
+        }
+    </script>
+
 
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -39,7 +39,7 @@ namespace Spice.Areas.Admin.Controllers
             return View(menuItems);
         }
 
-        //get - Create
+        //GET - CREATE
         public IActionResult Create()
         {
             return View(MenuItemVM);

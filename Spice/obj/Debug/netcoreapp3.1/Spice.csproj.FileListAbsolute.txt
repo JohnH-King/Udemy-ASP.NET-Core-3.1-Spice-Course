@@ -482,7 +482,6 @@ C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Cate
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Details.cshtml.g.cs
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Delete.cshtml.g.cs
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TableButtonPartial.cshtml.g.cs
-C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Spice.csprojAssemblyReference.cache
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Index.cshtml.g.cs
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Create.cshtml.g.cs
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_StatusMessage.cshtml.g.cs
@@ -499,3 +498,5 @@ C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coup
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coupon\Delete.cshtml.g.cs
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coupon\Details.cshtml.g.cs
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coupon\Edit.cshtml.g.cs
+C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ThumbnailAreaPartial.cshtml.g.cs
+C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Spice.csprojAssemblyReference.cache
