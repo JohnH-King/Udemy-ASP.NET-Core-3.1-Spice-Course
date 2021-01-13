@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@using Spice.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Spice</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
     <link rel="stylesheet" href="~/css/jquery-ui.css" />
     <script src="https://cdn.tiny.cloud/1/e08zfyowx144m4snbjpn6vjzzz3o2blqq4er2nt80riuzx0o/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
@@ -16,12 +20,18 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/24a048a285.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Spice</a>
+                <a class="navbar-brand" asp-area="Customer" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/mild.png" />
+                    <img src="~/images/spicy.png" />
+                    <img src="~/images/verySpicy.png" />
+                    &nbsp;<label class="text-info" style="cursor:pointer">Spice</label>
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,24 +39,46 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item dropdown text-white-50">
-                            <a class="nav-link dropdown-toggle" hred="#" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Content Management
-                             </a>   
-                            <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
-                                <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">Category</a>
-                                <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory" asp-area="Admin">Sub Category</a>
-                                <a class="dropdown-item" asp-action="Index" asp-controller="MenuItem" asp-area="Admin">MenuItem</a>
-                                <a class="dropdown-item" asp-action="Index" asp-controller="Coupon" asp-area="Admin">Coupons</a>
-                                <a class="dropdown-item">Users</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
+                        @if (User.IsInRole(SD.ManagerUser))
+                        {
+
+                            <li class="nav-item dropdown text-white-50">
+                                <a class="nav-link dropdown-toggle" hred="#" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Content Management
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">Category</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory" asp-area="Admin">Sub Category</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="MenuItem" asp-area="Admin">MenuItem</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Coupon" asp-area="Admin">Coupons</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="User" asp-area="Admin">Users</a>
+                                </div>
+                            </li>
+                        }
+
+                        <!--retrieve sesson-->
+                        @if (HttpContextAccessor.HttpContext.Session.GetInt32(@SD.ssShoppingCartCount) != null)
+                        {
+                            <li style="color:white">
+                                <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="nav-link">
+                                    @{
+                                        var count = HttpContextAccessor.HttpContext.Session.GetInt32(@SD.ssShoppingCartCount);
+                                    }
+                                    <i class="fas fa-shopping-cart"></i> &nbsp; (@count)
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+
+
+                            <li style="color:white">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-shopping-cart"></i> &nbsp; (0)
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
