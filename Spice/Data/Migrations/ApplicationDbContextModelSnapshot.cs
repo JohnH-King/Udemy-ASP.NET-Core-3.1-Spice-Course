@@ -354,8 +354,8 @@ namespace Spice.Data.Migrations
                     b.Property<string>("CouponCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CouponCodeDiscount")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("CouponCodeDiscount")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
