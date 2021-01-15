@@ -510,3 +510,4 @@ C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Individu
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Order\OrderHistory.cshtml.g.cs
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_OrderStatus.cshtml.g.cs
 C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Order\ManageOrder.cshtml.g.cs
+C:\Coding\Udemy\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Order\OrderPickup.cshtml.g.cs
